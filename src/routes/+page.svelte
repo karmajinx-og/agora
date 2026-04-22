@@ -13,11 +13,13 @@
   let error = ''
   let sovereigntyFilter: 'all' | 'safe-only' | 'no-risk' = 'all'
 
+  // "Hide risk": drop only apps explicitly tagged risk; keep untagged (not in DB yet).
+  // "Safe only": apps explicitly tagged safe (small list until tag DB grows).
   $: filteredApps = apps.filter(app => {
     if (sovereigntyFilter === 'all') return true
     const s = getSovereignty(app.id)
     if (sovereigntyFilter === 'safe-only') return s?.level === 'safe'
-    if (sovereigntyFilter === 'no-risk') return s !== null && s.level !== 'risk'
+    if (sovereigntyFilter === 'no-risk') return !s || s.level !== 'risk'
     return true
   })
 
