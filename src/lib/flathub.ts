@@ -21,18 +21,22 @@ export interface FlathubSearchResult {
 
 const BASE = 'https://flathub.org/api/v2'
 
-// Fetch popular apps for the home feed
+// Fetch popular apps for the home feed (Flathub v2 uses /collection/popular, not /popular)
 export async function fetchPopularApps(page = 1): Promise<FlathubApp[]> {
-  const res = await fetch(`${BASE}/popular?page=${page}&per_page=36`)
+  const res = await fetch(`${BASE}/collection/popular?page=${page}&per_page=36`)
   if (!res.ok) throw new Error(`Flathub API error: ${res.status}`)
   const data = await res.json()
   return data.hits ?? data ?? []
 }
 
-// Search apps by query
+// Search apps by query (v2 expects POST + JSON body)
 export async function searchApps(query: string): Promise<FlathubApp[]> {
   if (!query.trim()) return fetchPopularApps()
-  const res = await fetch(`${BASE}/search?q=${encodeURIComponent(query)}&page=1&per_page=36`)
+  const res = await fetch(`${BASE}/search`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ query, filters: [], page: 1, hitsPerPage: 36 })
+  })
   if (!res.ok) throw new Error(`Flathub search error: ${res.status}`)
   const data = await res.json()
   return data.hits ?? []
@@ -40,7 +44,9 @@ export async function searchApps(query: string): Promise<FlathubApp[]> {
 
 // Fetch apps by category
 export async function fetchByCategory(category: string): Promise<FlathubApp[]> {
-  const res = await fetch(`${BASE}/apps/category/${encodeURIComponent(category)}?page=1&per_page=36`)
+  const res = await fetch(
+    `${BASE}/collection/category/${encodeURIComponent(category)}?page=1&per_page=36`
+  )
   if (!res.ok) throw new Error(`Flathub category error: ${res.status}`)
   const data = await res.json()
   return data.hits ?? data ?? []
