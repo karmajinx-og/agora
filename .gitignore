@@ -3,4 +3,8 @@ node_modules/
 build/
 dist/
 .env
+.env.*
+!.env.example
 .DS_Store
+
+.wrangler/
