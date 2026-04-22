@@ -1,17 +1,17 @@
 <svelte:head>
   <title>About — Agora Linux App Store</title>
-  <meta name="description" content="Agora is a Linux app discovery platform with EU sovereignty ratings. Find GDPR-safe, open-source software." />
+  <meta name="description" content="Agora is a Linux app discovery platform with community privacy ratings. Find GDPR-safe, open-source software." />
 </svelte:head>
 
 <div class="page">
   <h1>About Agora</h1>
 
-  <p>Agora is a Linux app discovery platform built for the EU digital sovereignty wave. Every app is rated for GDPR compliance, EU origin, telemetry behaviour, and open-source status.</p>
+  <p>Agora is a Linux app discovery platform built for the EU public-sector and privacy-conscious Linux wave. Every app is <strong>community-rated</strong> for GDPR, EU origin, telemetry, and open-source status.</p>
 
   <h2>Why Agora?</h2>
-  <p>Millions of EU government workers are migrating from Windows to Linux in 2026. France, Germany, Denmark, and Switzerland have all announced major migrations. They need a way to discover trusted, sovereignty-safe software — not just a package list.</p>
+  <p>Millions of EU government workers are migrating from Windows to Linux in 2026. France, Germany, Denmark, and Switzerland have all announced major migrations. They need a way to discover trusted, privacy-respecting software — not just a package list.</p>
 
-  <h2>Sovereignty ratings</h2>
+  <h2>Privacy &amp; community ratings</h2>
   <div class="ratings">
     <div class="rating">
       <span class="badge safe">Safe</span>
@@ -35,7 +35,7 @@
   <p>Agora uses <a href="https://flatpak.org" target="_blank" rel="noreferrer">Flatpak</a> — a universal Linux app format that works across Ubuntu, Fedora, Debian, and most other distributions. Each app page shows the exact command to copy and run in your terminal.</p>
 
   <h2>Open source</h2>
-  <p>Agora is open source. The sovereignty tag database is community-maintained. <a href="https://github.com/karmajinx-og/agora" target="_blank" rel="noreferrer">Contribute on GitHub →</a></p>
+  <p>Agora is open source. The privacy tag database is community-maintained. <a href="https://github.com/karmajinx-og/agora" target="_blank" rel="noreferrer">Contribute on GitHub →</a></p>
 </div>
 
 <style>

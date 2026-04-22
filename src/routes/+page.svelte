@@ -39,13 +39,13 @@
 
 <svelte:head>
   <title>Agora — Linux App Store</title>
-  <meta name="description" content="Discover Linux apps with GDPR, EU-origin, and telemetry ratings. The sovereignty-aware app store for the EU Linux migration." />
+  <meta name="description" content="Discover Linux apps with GDPR, EU-origin, and telemetry ratings. Community-rated and privacy-tagged for the EU Linux migration." />
   <meta property="og:title" content="Agora — Linux App Store" />
-  <meta property="og:description" content="Browse and discover Linux Flatpak apps with sovereignty ratings. Built for the EU Linux migration." />
+  <meta property="og:description" content="Browse and discover Linux Flatpak apps — community-rated for privacy and trust. Built for the EU Linux migration." />
 </svelte:head>
 
 <div class="hero">
-  <h1>Linux apps, <span class="accent">sovereignty rated</span></h1>
+  <h1>Linux apps, <span class="accent">community rated</span></h1>
   <p class="hero-sub">Browse Flatpak apps with GDPR, EU-origin, and telemetry tags — built for the EU Linux migration.</p>
 </div>
 

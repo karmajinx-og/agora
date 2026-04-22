@@ -28,7 +28,7 @@
     <div class="footer-inner">
       <span>Agora — Linux App Store</span>
       <span class="sep">·</span>
-      <span>Sovereignty-tagged apps for EU Linux users</span>
+      <span>Community-rated apps for EU Linux users</span>
       <span class="sep">·</span>
       <a href="https://github.com/karmajinx-og/agora" target="_blank" rel="noreferrer">GitHub</a>
       <span class="sep">·</span>

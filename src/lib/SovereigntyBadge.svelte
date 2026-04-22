@@ -8,11 +8,11 @@
   <div class="badge level-{sovereignty.level}" class:compact>
     <span class="dot"></span>
     {#if sovereignty.level === 'safe'}
-      {compact ? 'Safe' : 'Sovereignty safe'}
+      {compact ? 'Safe' : 'Privacy safe'}
     {:else if sovereignty.level === 'caution'}
       {compact ? 'Caution' : 'Review advised'}
     {:else if sovereignty.level === 'risk'}
-      {compact ? 'Risk' : 'Sovereignty risk'}
+      {compact ? 'Risk' : 'Privacy risk'}
     {:else}
       {compact ? '?' : 'Not reviewed'}
     {/if}

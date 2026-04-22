@@ -6,7 +6,7 @@
 
 <svelte:head>
   <title>{data.category} Apps — Agora Linux App Store</title>
-  <meta name="description" content="Browse {data.category} Linux apps with EU sovereignty ratings on Agora." />
+  <meta name="description" content="Browse {data.category} Linux apps with community privacy ratings on Agora." />
 </svelte:head>
 
 <div class="page">
