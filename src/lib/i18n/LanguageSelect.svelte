@@ -9,9 +9,9 @@
     pl: 'Polski',
   }
   $: ui = getUi($locale)
-  function onChange(e: Event) {
+  async function onChange(e: Event) {
     const v = (e.currentTarget as HTMLSelectElement).value
-    if ((LOCALES as readonly string[]).includes(v)) setLocale(v as Locale)
+    if ((LOCALES as readonly string[]).includes(v)) await setLocale(v as Locale)
   }
 </script>
 

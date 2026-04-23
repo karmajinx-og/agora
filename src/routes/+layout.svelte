@@ -1,8 +1,12 @@
 <script lang="ts">
   import { browser } from '$app/environment'
+  import type { LayoutData } from './$types'
   import '../app.css'
-  import { locale, getUi } from '$lib/i18n'
+  import { locale, getUi, type Locale } from '$lib/i18n'
   import LanguageSelect from '$lib/i18n/LanguageSelect.svelte'
+
+  export let data: LayoutData
+  $: if (data?.locale) locale.set(data.locale as Locale)
   $: ui = getUi($locale)
   $: if (browser) document.documentElement.lang = $locale
 </script>

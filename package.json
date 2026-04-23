@@ -10,7 +10,8 @@
     "dev": "vite dev",
     "build": "vite build",
     "preview": "vite preview",
-    "check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json"
+    "check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
+    "ci": "npm run check && npm run build"
   },
   "devDependencies": {
     "@sveltejs/adapter-cloudflare": "^4.0.0",

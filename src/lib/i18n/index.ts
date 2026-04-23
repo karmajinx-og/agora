@@ -1,37 +1,25 @@
 import { browser } from '$app/environment'
+import { invalidateAll } from '$app/navigation'
 import { writable } from 'svelte/store'
-import { DEFAULT_LOCALE, LOCALES, type Locale, type UiStrings, getUi, UI } from './locales'
+import { DEFAULT_LOCALE, type Locale, type UiStrings, getUi, LOCALES } from './locales'
 
-const STORAGE = 'agora-locale'
+/** Synced from root +layout.server (cookie + Accept-Language) to avoid SSR/client text mismatch. */
+export const locale = writable<Locale>(DEFAULT_LOCALE)
 
-function readInitial(): Locale {
-  if (!browser) return DEFAULT_LOCALE
-  try {
-    const s = localStorage.getItem(STORAGE) as Locale | null
-    if (s && (LOCALES as readonly string[]).includes(s)) return s
-  } catch {
-    /* empty */
-  }
-  const want = browser ? navigator.languages?.[0] ?? navigator.language : ''
-  const short = want.slice(0, 2).toLowerCase()
-  if ((LOCALES as readonly string[]).includes(short)) return short as Locale
-  return DEFAULT_LOCALE
-}
+const COOKIE = 'agora-locale'
+const Y = 60 * 60 * 24 * 365
 
-/** Current UI language (en, de, fr, es, it, pl). */
-export const locale = writable<Locale>(readInitial())
-
-if (browser) {
-  locale.set(readInitial())
-}
-
-export function setLocale(l: Locale): void {
+export async function setLocale(l: Locale): Promise<void> {
+  if (!(LOCALES as readonly string[]).includes(l)) return
   locale.set(l)
+  if (!browser) return
+  const secure = location.protocol === 'https:' ? '; Secure' : ''
   try {
-    localStorage.setItem(STORAGE, l)
+    document.cookie = `${COOKIE}=${l}; path=/; max-age=${Y}; SameSite=Lax${secure}`
   } catch {
     /* empty */
   }
+  await invalidateAll()
 }
 
-export { getUi, UI, LOCALES, DEFAULT_LOCALE, type Locale, type UiStrings }
+export { getUi, LOCALES, DEFAULT_LOCALE, type Locale, type UiStrings }

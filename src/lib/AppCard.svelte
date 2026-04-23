@@ -44,7 +44,11 @@
   .icon-fallback { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; font-size: 22px; font-weight: 700; color: var(--text-secondary); background: var(--border); }
   .info { display: flex; flex-direction: column; gap: 4px; width: 100%; }
   .name { font-size: 14px; font-weight: 600; color: var(--text-primary); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-  .summary { font-size: 12px; color: var(--text-secondary); line-height: 1.4; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+  .summary {
+    font-size: 12px; color: var(--text-secondary); line-height: 1.4;
+    display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
+    line-clamp: 2;
+  }
   .meta { display: flex; align-items: center; gap: 6px; margin-top: 4px; flex-wrap: wrap; }
   .free { font-size: 10px; font-weight: 600; color: var(--text-muted); text-transform: uppercase; letter-spacing: .04em; }
 </style>
