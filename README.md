@@ -38,6 +38,21 @@ SvelteKit + Cloudflare Pages. **Authoritative app copy for deployment:** this fo
 - `src/hooks.server.ts` sets baseline security headers on app responses.
 - Cookies use `SameSite=Lax` and `Secure` on HTTPS.
 
+## Pre-release checklist (quick)
+
+1. `npm run ci` passes.
+2. Optional: `npx lighthouse https://agoralinux.app` (performance / a11y / SEO).
+3. From `agora-github-sync`: `git push origin main` → wait for Cloudflare **Success**.
+
+## Sync script (two-folder workflow)
+
+From `web/`:
+
+```bash
+./scripts/publish-to-github.sh
+cd ../agora-github-sync && npm run ci && git add -A && git commit -m "your message" && git push origin main
+```
+
 ## GitHub Actions (optional)
 
 A workflow file lives in `.github/workflows/ci.yml` (Node 20, `npm ci`, `check`, `build`). If `git push` is rejected for “workflow scope”, add the [workflow `scope`](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens#modifying-a-personal-access-token) to your PAT, push via SSH, or paste the YAML into **Actions → New workflow** in the repo. Until then, run `npm run ci` locally before every deploy.

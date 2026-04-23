@@ -153,7 +153,12 @@
   .filters { display: flex; gap: 6px; }
   .filter-btn { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 7px 14px; font-size: 13px; color: var(--text-secondary); cursor: pointer; transition: all 0.1s; }
   .filter-btn:hover { border-color: var(--border-hover); color: var(--text-primary); }
-  .filter-btn.active { background: rgba(91,126,247,0.15); border-color: var(--accent); color: var(--accent); font-weight: 600; }
+  .filter-btn.active {
+    background: rgba(107, 136, 248, 0.18);
+    border-color: var(--accent);
+    color: var(--accent);
+    font-weight: 600;
+  }
 
   .count { font-size: 12px; color: var(--text-muted); white-space: nowrap; margin-left: auto; }
 

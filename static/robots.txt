@@ -1,0 +1,5 @@
+# https://agoralinux.app/robots.txt
+User-agent: *
+Allow: /
+
+Sitemap: https://agoralinux.app/sitemap.xml

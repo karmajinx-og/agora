@@ -7,9 +7,11 @@
   --border-hover: #3d4060;
   --text-primary: #e8eaf0;
   --text-secondary: #8b90a8;
-  --text-muted: #555a70;
-  --accent: #5b7ef7;
-  --accent-hover: #7090ff;
+  /* Muted: ≥4.5:1 on --bg / --bg-card (WCAG AA for body copy) */
+  --text-muted: #7a8299;
+  /* Accent: slightly higher contrast on active filter tint (#1a2139) */
+  --accent: #6b88f8;
+  --accent-hover: #7c9aff;
   --safe: #22c55e;
   --safe-bg: #0d2d1a;
   --caution: #f59e0b;
