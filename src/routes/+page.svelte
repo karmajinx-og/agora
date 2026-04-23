@@ -70,20 +70,27 @@
 
 <svelte:head>
   <title>{ui.home_title}</title>
-  <meta name="description" content="Discover Linux apps with GDPR, EU-origin, and telemetry ratings. Community-rated and privacy-tagged for the EU Linux migration." />
+  <meta
+    name="description"
+    content="Linux apps labelled for privacy — telemetry, data residency, open source, in short notes. For EU Linux users, home and work."
+  />
   <meta property="og:title" content={ui.home_title} />
-  <meta property="og:description" content="Browse and discover Linux Flatpak apps — community-rated for privacy and trust. Built for the EU Linux migration." />
+  <meta
+    property="og:description"
+    content="Linux apps labelled for privacy. Short notes for EU Linux users — Flatpak catalogue with a privacy lens."
+  />
 </svelte:head>
 
 <div class="hero">
   <h1>{ui.hero_h1_main}<span class="accent">{ui.hero_h1_accent}</span></h1>
   <p class="hero-sub">{ui.hero_sub}</p>
-  <p class="hero-help" role="group" aria-label="Help links">
-    <a href="/about#new-to-linux" class="hero-help-link">{ui.hero_help_link}</a>
-    <span class="hero-help-sep" aria-hidden="true"> · </span>
-    <a href="/about" class="hero-help-link">{ui.nav_how}</a>
+  <p class="hero-help" role="group" aria-label="Help">
+    <span class="hero-help-intro">{ui.hero_help_intro}</span>
+    <a href="/about" class="hero-help-link">{ui.nav_how}</a><span class="hero-help-sep" aria-hidden="true">.</span>
   </p>
-  <p class="hero-help-hint">{ui.hero_help_hint}</p>
+  {#if ui.hero_help_hint}
+    <p class="hero-help-hint">{ui.hero_help_hint}</p>
+  {/if}
 </div>
 
 <div class="toolbar-wrap">
@@ -108,21 +115,21 @@
           type="button"
           class="filter-btn"
           class:active={sovereigntyFilter === 'all'}
-          title="Show every app in the list. Badges on cards still show our notes when we have them."
+          title="Show the full list. Card badges use our notes when we have them."
           on:click={() => sovereigntyFilter = 'all'}
         >{ui.filter_all}</button>
         <button
           type="button"
           class="filter-btn"
           class:active={sovereigntyFilter === 'no-risk'}
-          title="Hides only the apps we marked with the strongest privacy warnings. Apps we have not written up yet still appear."
+          title="Hides apps we’ve flagged as high-risk. Unreviewed apps still appear in the list."
           on:click={() => sovereigntyFilter = 'no-risk'}
         >{ui.filter_hide}</button>
         <button
           type="button"
           class="filter-btn"
           class:active={sovereigntyFilter === 'safe-only'}
-          title="Only apps we’ve fully checked and marked as “all clear” in our list. Small on purpose — it will grow as we add more reviews."
+          title="Only apps that fully pass our review criteria. Short list by design."
           on:click={() => sovereigntyFilter = 'safe-only'}
         >{ui.filter_safe}</button>
       </div>
@@ -175,7 +182,7 @@
   .toolbar { display: flex; align-items: flex-end; gap: 12px; flex-wrap: wrap; }
   .search-wrap { position: relative; flex: 1; min-width: 200px; max-width: 480px; }
   .filter-block { display: flex; flex-direction: column; gap: 6px; min-width: 0; }
-  .filter-label { font-size: 11px; font-weight: 600; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.06em; margin: 0; }
+  .filter-label { font-size: 12px; font-weight: 600; color: var(--text-muted); letter-spacing: 0.02em; margin: 0; }
   .filter-hint { font-size: 12px; color: var(--text-muted); line-height: 1.5; margin: 10px 0 0; max-width: 100%; }
   .search-icon { position: absolute; left: 10px; top: 50%; transform: translateY(-50%); width: 16px; height: 16px; color: var(--text-muted); pointer-events: none; }
   .search { width: 100%; background: var(--bg-input); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 9px 12px 9px 34px; font-size: 14px; color: var(--text-primary); }
