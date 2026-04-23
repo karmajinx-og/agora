@@ -37,3 +37,7 @@ SvelteKit + Cloudflare Pages. **Authoritative app copy for deployment:** this fo
 
 - `src/hooks.server.ts` sets baseline security headers on app responses.
 - Cookies use `SameSite=Lax` and `Secure` on HTTPS.
+
+## GitHub Actions (optional)
+
+A workflow file lives in `.github/workflows/ci.yml` (Node 20, `npm ci`, `check`, `build`). If `git push` is rejected for “workflow scope”, add the [workflow `scope`](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens#modifying-a-personal-access-token) to your PAT, push via SSH, or paste the YAML into **Actions → New workflow** in the repo. Until then, run `npm run ci` locally before every deploy.
