@@ -1,15 +1,16 @@
 <script lang="ts">
   import type { FlathubApp } from '$lib/flathub'
-  import { iconUrl } from '$lib/flathub'
+  import { flatpakRef, iconUrl } from '$lib/flathub'
   import { getSovereignty } from '$lib/sovereignty'
   import SovereigntyBadge from '$lib/SovereigntyBadge.svelte'
 
   export let app: FlathubApp
-  const sovereignty = getSovereignty(app.id)
+  $: ref = flatpakRef(app)
+  $: sovereignty = getSovereignty(ref)
   let imgError = false
 </script>
 
-<a href="/app/{app.id}" class="card">
+<a href="/app/{ref}" class="card">
   <div class="icon-wrap">
     {#if !imgError}
       <img src={iconUrl(app)} alt={app.name} on:error={() => imgError = true} />

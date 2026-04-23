@@ -71,7 +71,7 @@ export const sovereigntyData: AppSovereignty[] = [
     level: 'safe', last_reviewed: '2026-04-20'
   },
   {
-    id: 'element.io/Element',
+    id: 'im.riot.Riot',
     tags: { eu_origin: true, gdpr_safe: true, no_telemetry: true, open_source: true, us_cloud_dependency: false, verified_safe: true, notes: 'Element/Matrix — EU-origin, federated, self-hostable' },
     level: 'safe', last_reviewed: '2026-04-20'
   },

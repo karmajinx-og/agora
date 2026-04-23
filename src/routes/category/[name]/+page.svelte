@@ -20,7 +20,7 @@
       <div class="state-msg"><p>No apps found in this category.</p></div>
     {:else}
       <div class="grid">
-        {#each data.apps as app (app.id)}
+        {#each data.apps as app (app.app_id ?? app.id)}
           <AppCard {app} />
         {/each}
       </div>

@@ -1,12 +1,12 @@
 <script lang="ts">
   import type { PageData } from './$types'
-  import { iconUrl, installCommand } from '$lib/flathub'
+  import { flatpakRef, iconUrl, installCommand } from '$lib/flathub'
   import SovereigntyBadge from '$lib/SovereigntyBadge.svelte'
 
   export let data: PageData
   $: app = data.app
   $: sovereignty = data.sovereignty
-  $: command = installCommand(app.id)
+  $: command = installCommand(flatpakRef(app))
 
   let copied = false
   let imgError = false

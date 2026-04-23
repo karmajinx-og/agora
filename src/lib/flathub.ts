@@ -1,6 +1,9 @@
 // Flathub API types
 export interface FlathubApp {
+  /** v2 index key, often underscored (e.g. org_mozilla_firefox) */
   id: string
+  /** Real Flatpak ref (e.g. org.mozilla.firefox) — use for API detail, install, and tag DB */
+  app_id?: string
   name: string
   summary: string
   description?: string
@@ -58,10 +61,24 @@ export async function fetchAppDetail(id: string): Promise<FlathubApp> {
   return res.json()
 }
 
+/** Flatpak app ref for APIs, install commands, and sovereignty DB (dotted id). */
+export function flatpakRef(app: FlathubApp): string {
+  if (app.app_id) return app.app_id
+  // v1-style or edge cases: internal id uses underscores instead of dots
+  return app.id.includes('.') ? app.id : app.id.replace(/_/g, '.')
+}
+
+/** Normalise a route or query param to a Flatpak ref (v2 /appstream accepts dotted id only). */
+export function flatpakRefFromParam(id: string): string {
+  if (id.includes('.')) return id
+  return id.replace(/_/g, '.')
+}
+
 // Build icon URL from app id
 export function iconUrl(app: FlathubApp): string {
   if (app.icon?.startsWith('http')) return app.icon
-  return `https://dl.flathub.org/repo/appstream/${app.id}/icons/128x128/${app.id}.png`
+  const ref = flatpakRef(app)
+  return `https://dl.flathub.org/repo/appstream/${ref}/icons/128x128/${ref}.png`
 }
 
 /** Copy-paste install line for web / docs (matches common Flathub usage). */
