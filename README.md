@@ -55,4 +55,4 @@ cd ../agora-github-sync && npm run ci && git add -A && git commit -m "your messa
 
 ## GitHub Actions (optional)
 
-A workflow file lives in `.github/workflows/ci.yml` (Node 20, `npm ci`, `check`, `build`). If `git push` is rejected for “workflow scope”, add the [workflow `scope`](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens#modifying-a-personal-access-token) to your PAT, push via SSH, or paste the YAML into **Actions → New workflow** in the repo. Until then, run `npm run ci` locally before every deploy.
+A workflow file lives in `.github/workflows/ci.yml` — it reads **`.nvmrc`** (same as Cloudflare Pages) and runs `npm ci`, `check`, and `build`. If `git push` is rejected for “workflow scope”, add the [workflow `scope`](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens#modifying-a-personal-access-token) to your PAT, push via SSH, or paste the YAML into **Actions → New workflow** in the repo. Until then, run `npm run ci` locally before every deploy.
