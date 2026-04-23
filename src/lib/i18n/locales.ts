@@ -60,17 +60,18 @@ const en: UiStrings = {
   hero_sub:
     'Browse installable Linux programs with simple privacy notes — for anyone moving to Linux in the EU, including on work computers.',
   hero_help_link: 'New to Linux or the coloured labels?',
-  hero_help_hint: 'Short guide in everyday words (English) — from the “How it works” page.',
-  filter_label: 'List filter (privacy notes)',
+  hero_help_hint:
+    'The guide is in English for now. It covers what the label colours mean, the words we use, and how the install line works.',
+  filter_label: 'Choose what the list shows',
   filter_all: 'All apps',
-  filter_hide: 'Hide “risk” tags',
-  filter_safe: '“Safe” in our list only',
+  filter_hide: 'Hide strongest-warning apps',
+  filter_safe: 'Only our “all clear” list',
   filter_hint_all:
     'We add short privacy notes to some apps, not all. The next two options only change the list you see; they are not a guarantee the app is “safe on every PC”.',
   filter_hint_hide:
-    'Hides only apps we marked as “risk” in our small database. Apps we have not written up yet still show — not reviewed means “unknown to us”, not “bad”.',
+    'Hides only the apps we gave our strongest privacy warnings. Apps we have not written up yet still show — not reviewed means “unknown to us”, not “bad”.',
   filter_hint_safe:
-    'Only apps we fully marked “safe” in our database. That list is short and strict on purpose, and it will grow as we add more reviews.',
+    'Only apps we have fully checked and marked as “all clear” for our criteria. The list is short and strict on purpose, and it will grow as we add more reviews.',
   about_title: 'How it works — Agora Linux App Store',
   about_stays_en:
     'The full guide on this page is in English. Your browser can translate the page, or you can help add proper translations on GitHub. Thank you for your patience.',
@@ -84,7 +85,7 @@ const en: UiStrings = {
   word_apps: 'apps',
   home_title: 'Agora — Linux App Store',
   hero_h1_main: 'Linux apps, ',
-  hero_h1_accent: 'community rated',
+  hero_h1_accent: 'community rated.',
 }
 
 const de: UiStrings = {
@@ -102,17 +103,18 @@ const de: UiStrings = {
   hero_sub:
     'Durchsuchen Sie installierbare Linux-Programme mit einfachen Datenschutzhinweisen — für alle, die in der EU auf Linux wechseln, auch am Arbeits-PC.',
   hero_help_link: 'Neu bei Linux oder den farbigen Markierungen?',
-  hero_help_hint: 'Kurze Erklärung in einfachen Worten (Englisch) — auf der Seite „So funktioniert’s“.',
-  filter_label: 'Listenfilter (Datenschutzhinweise)',
+  hero_help_hint:
+    'Die Erklärung ist vorerst auf Englisch: Farben der Kennzeichnungen, Begriffe, und der Installationsbefehl.',
+  filter_label: 'Was die Liste anzeigen soll',
   filter_all: 'Alle Apps',
-  filter_hide: '„Risiko“-Markierungen ausblenden',
-  filter_safe: 'Nur in unserer Liste „sicher“',
+  filter_hide: 'Stärkste Bedenken ausblenden',
+  filter_safe: 'Nur unsere „alles in Ordnung“-Liste',
   filter_hint_all:
     'Wir ergänzen kurze Datenschutzhinweise — noch nicht für jede App. Die nächsten beiden Optionen ändern nur die Liste; sie sind keine Garantie für „sicher auf jedem Rechner“.',
   filter_hint_hide:
-    'Blendet nur Apps aus, die wir in unserer kleinen Datenbank als „Risiko“ markiert haben. Nicht geprüfte Apps erscheinen weiter — „kein Eintrag“ heißt „uns unbekannt“, nicht „schlecht“.',
+    'Blendet nur Apps aus, die wir mit den stärksten Datenschutzhinweisen markiert haben. Nicht geprüfte Apps erscheinen weiter — „kein Eintrag“ heißt „uns unbekannt“, nicht „schlecht“.',
   filter_hint_safe:
-    'Nur Apps, die wir in der Datenbank voll als „sicher“ markiert haben. Diese Liste ist bewusst kurz und streng und wird wachsen.',
+    'Nur Apps, die wir in der Datenbank voll geprüft und als unbedenklich markiert haben. Diese Liste ist bewusst kurz und streng und wird wachsen.',
   about_title: 'So funktioniert’s — Agora Linux-App-Shop',
   about_stays_en:
     'Der ausführliche Leitfaden auf dieser Seite ist auf Englisch. Ihr Browser kann die Seite übersetzen, oder Sie helfen mit Übersetzungen auf GitHub. Vielen Dank.',
@@ -144,17 +146,18 @@ const fr: UiStrings = {
   hero_sub:
     'Parcourez des applications Linux installables avec des notes de confidentialité simples — pour ceux qui passent à Linux dans l’UE, y compris au travail.',
   hero_help_link: 'Nouveau sur Linux ou sur les pastilles de couleur ?',
-  hero_help_hint: 'Guide court, en mots simples (anglais) — depuis la page « Fonctionnement ».',
-  filter_label: 'Filtre (notes de confidentialité)',
+  hero_help_hint:
+    'Le guide est pour l’instant en anglais : couleurs des pastilles, vocabulaire, et ligne d’installation à copier.',
+  filter_label: 'Choisir l’affichage de la liste',
   filter_all: 'Toutes les apps',
-  filter_hide: 'Masquer le « risque »',
-  filter_safe: '« Sûr » dans notre liste seulement',
+  filter_hide: 'Masquer les alertes les plus sérieuses',
+  filter_safe: 'Seulement notre liste « tout va bien »',
   filter_hint_all:
     'Nous ajoutons de courtes notes de confidentialité — pas pour toutes les apps. Les options suivantes ne changent que la liste affichée ; ce n’est pas une garantie « sûr sur chaque ordinateur ».',
   filter_hint_hide:
-    'Masque seulement les apps marquées « risque » dans notre petite base. Les apps non vérifiées restent visibles : « pas de fiche » signifie « inconnu pour nous », pas « mauvais ».',
+    'Masque seulement les apps auxquelles nous avons donné l’alerte la plus marquée. Les apps non vérifiées restent visibles : « pas de fiche » signifie « inconnu pour nous », pas « mauvais ».',
   filter_hint_safe:
-    'Uniquement les apps que nous avons intégralement marquées « sûr ». La liste est volontairement courte et stricte ; elle s’agrandira avec le temps.',
+    'Uniquement les apps que nous avons intégralement vérifiées et jugées vraiment rassurantes. La liste est volontairement courte et stricte ; elle s’agrandira avec le temps.',
   about_title: 'Fonctionnement — Agora',
   about_stays_en:
     'Le guide complet de cette page est en anglais. Votre navigateur peut traduire la page, ou vous pouvez aider sur GitHub. Merci de votre compréhension.',
@@ -186,17 +189,18 @@ const es: UiStrings = {
   hero_sub:
     'Explora programas Linux con notas breves de privacidad, para quien pasa a Linux en la UE, también en el trabajo.',
   hero_help_link: '¿Nuevo en Linux o en las etiquetas de color?',
-  hero_help_hint: 'Guía breve, en palabras sencillas (inglés) — en la página « Cómo funciona ».',
-  filter_label: 'Filtro (notas de privacidad)',
+  hero_help_hint:
+    'La guía está por ahora en inglés: colores de las marcas, términos, y el comando de instalación.',
+  filter_label: 'Elegir qué muestra la lista',
   filter_all: 'Todas las apps',
-  filter_hide: 'Ocultar « riesgo »',
-  filter_safe: 'Solo « seguras » en nuestra lista',
+  filter_hide: 'Quitar avisos fuertes',
+  filter_safe: 'Solo lista « todo despejado »',
   filter_hint_all:
     'Añadimos notas de privacidad a algunas apps, no a todas. Las dos opciones siguientes solo cambian la lista que ves; no garantizan que la app « sea segura en todo ordenador ».',
   filter_hint_hide:
-    'Oculta solo lo que marcamos « riesgo » en nuestra pequeña base. Las no revisadas siguen mostrándose: « sin ficha » significa « desconocida para nosotros », no « mala ».',
+    'Oculta solo las que marcamos con la advertencia más seria. Las no revisadas siguen mostrándose: « sin ficha » significa « desconocida para nosotros », no « mala ».',
   filter_hint_safe:
-    'Solo las que marcamos del todo « seguras » en la base. La lista es corta a propósito; crecerá con más reseñas.',
+    'Solo las que comprobamos y marcamos como claramente aceptables. La lista es corta a propósito; crecerá con más reseñas.',
   about_title: 'Cómo funciona — Agora',
   about_stays_en:
     'La guía detallada de esta página está en inglés. El navegador puede traducir, o puedes colaborar en GitHub. Gracias por tu paciencia.',
@@ -228,17 +232,18 @@ const it: UiStrings = {
   hero_sub:
     'Sfoglia programmi installabili per Linux con note di privacy semplici — per chi in UE passa a Linux, anche al lavoro.',
   hero_help_link: 'Nuovo a Linux o alle etichette colorate?',
-  hero_help_hint: 'Guida breve, parole semplici (inglese) — nella pagina « Come funziona ».',
-  filter_label: 'Filtro (note privacy)',
+  hero_help_hint:
+    'Per ora la guida è in inglese: colori delle etichette, termini, e riga del comando d’installazione.',
+  filter_label: 'Cosa mostrare in elenco',
   filter_all: 'Tutte le app',
-  filter_hide: 'Nascondi « rischio »',
-  filter_safe: 'Solo « sicure » nella nostra lista',
+  filter_hide: 'Senza segnalazioni forti',
+  filter_safe: 'Solo l’elenco « tutto ok »',
   filter_hint_all:
     'Aggiungiamo note di privacy a parte delle app, non a tutte. Le due opzioni sotto cambiano solo l’elenco; non significano che l’app « sia al sicuro su ogni PC ».',
   filter_hint_hide:
-    'Nasconde solo le app segnalate come « rischio » nel nostro database ridotto. Le app non ancora scritte restano visibili: niente scheda = « non lo sappiamo », non « cattivo ».',
+    'Nasconde solo le app a cui abbiamo dato l’avviso di privacy più forte. Le app non ancora scritte restano visibili: niente scheda = « non lo sappiamo », non « cattivo ».',
   filter_hint_safe:
-    'Solo le app segnate del tutto « sicure ». L’elenco è volutamente breve e crescerà con il tempo.',
+    'Solo le app che abbiamo controllato a fondo e considerate chiaramente ok. L’elenco è volutamente breve; crescerà con il tempo.',
   about_title: 'Come funziona — Agora',
   about_stays_en:
     'La guida completa su questa pagina è in inglese. Il browser può tradurre, oppure si può contribuire su GitHub. Grazie.',
@@ -270,17 +275,18 @@ const pl: UiStrings = {
   hero_sub:
     'Przeglądaj programy do instalacji w Linuxie z krótkimi notatkami o prywatności — dla osób przechodzących na Linuxa w UE, także w pracy.',
   hero_help_link: 'Nowy w Linuxie albo etykietach kolorów?',
-  hero_help_hint: 'Krótki przewodnik prostym językiem (angielski) — na stronie „Jak to działa”.',
-  filter_label: 'Filtr (notatki o prywatności)',
+  hero_help_hint:
+    'Na razie przewodnik jest po angielsku: kolory etykiet, słownictwo, i linia instalacji (do skopiowania).',
+  filter_label: 'Co widać na liście',
   filter_all: 'Wszystkie',
-  filter_hide: 'Ukryj „ryzyko”',
-  filter_safe: 'Tylko „bezpieczne” w naszej liście',
+  filter_hide: 'Bez naszych najmocniejszych zastrzeżeń',
+  filter_safe: 'Tylko w pełni sprawdzone u nas',
   filter_hint_all:
     'Dodajemy krótkie notatki o prywatności — jeszcze nie do wszystkich aplikacji. Dwie opcje poniżej tylko zmieniają listę; to nie gwarancja, że aplikacja jest „zawsze bezpieczna”.',
   filter_hint_hide:
-    'Ukrywa tylko to, co oznaczyliśmy jako „ryzyko” w małej bazie. Aplikacji bez opisu dalej widać — brak wpisu to „nam nieznane”, a nie „złe”.',
+    'Ukrywa tylko aplikacje, które oznaczyliśmy najpoważniejszymi uwagami o prywatności. Aplikacji bez opisu dalej widać — brak wpisu to „nam nieznane”, a nie „złe”.',
   filter_hint_safe:
-    'Tylko to, co w bazie w pełni oznaczono jako „bezpieczne”. Lista jest krótka i celowo ścisła; będzie rosnąć.',
+    'Tylko te, co dokładnie sprawdziliśmy i uznaliśmy za w porządku. Lista jest krótka i celowo ścisła; będzie rosnąć.',
   about_title: 'Jak to działa — Agora',
   about_stays_en:
     'Pełny przewodnik na tej stronie jest po angielsku. Przeglądarka może przetłumaczyć albo możesz pomóc na GitHub. Dziękujemy za cierpliwość.',

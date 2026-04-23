@@ -58,27 +58,33 @@
 
   <h2 id="filters-explained">The three list filters (Privacy filter)</h2>
   <p>On the home page you can narrow the <strong>list</strong> of apps. That does not change how safe an app is on your machine — it only
-    <strong>changes which rows we show you</strong>, using our small, growing tag database.</p>
+    <strong>changes which rows we show you</strong>, using our small, growing list of community notes.</p>
   <ul class="plain-list">
     <li>
       <strong>All apps</strong> — Show everything in the list (same as no filter). You may still see small privacy badges on each card
-      <em>if</em> we have tagged that app.
+      <em>if</em> we have added notes for that app.
     </li>
     <li>
-      <strong>Hide risk</strong> — <em>Hides</em> only apps we have <strong>explicitly</strong> marked as <strong>high risk</strong> for our
-      criteria (for example, strong US-cloud or policy concerns we’ve written down). Apps we <strong>haven’t reviewed yet</strong> <em>still appear</em>,
-      because “no tag” means “unknown to us” — not “safe” and not “bad”.
+      <strong>Hide strongest-warning apps</strong> — <em>Hides</em> only the apps we gave our <strong>strongest</strong> privacy
+      warnings to (for example, serious cloud or data-flow concerns we wrote down in plain terms). Apps we <strong>have not written up
+      yet</strong> <em>still appear</em>, because “no note from us” means “unknown to us” — not “OK” and not “bad”, just “we have not
+      checked yet”.
     </li>
     <li>
-      <strong>Safe only</strong> — <em>Only</em> shows apps we have <strong>fully</strong> tagged as <strong>“safe”</strong> in our database.
-      That is a <strong>short, strict list</strong> that will grow as more apps are reviewed. It is <strong>not</strong> a promise that
-      the software is perfect for every person or organisation.
+      <strong>Only our “all clear” list</strong> — <em>Only</em> shows apps we have <strong>fully</strong> checked and marked
+      <strong>“all clear”</strong> for our criteria. That is a <strong>short, strict list</strong> that will grow as more apps are
+      reviewed. It is <strong>not</strong> a promise that the software is perfect for every person or organisation.
     </li>
   </ul>
 
   <h2 id="badges">What the colour badges mean</h2>
-  <p>Badges on app cards and app pages are <strong>short summaries</strong> of our community tags — things like open source, telemetry, and
+  <p>Badges on app cards and app pages are <strong>short summaries</strong> of our community notes — things like open source, telemetry, and
     where data may go. They help you <strong>compare at a glance</strong>; the details are still yours to check.</p>
+  <p>
+    <strong>Who sets “Safe”, “Caution”, and “Risk” here?</strong> These are <strong>Agora’s own community-maintained labels</strong> — not a
+    government body, not your IT department, and not an official grade from Flathub. We write them in everyday language; they are a guide, not a
+    legal certificate.
+  </p>
   <div class="ratings">
     <div class="rating">
       <span class="badge safe">Safe</span>
