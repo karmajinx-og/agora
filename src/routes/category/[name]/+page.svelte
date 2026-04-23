@@ -29,7 +29,7 @@
 </div>
 
 <style>
-  .page { display: flex; flex-direction: column; height: 100vh; }
+  .page { display: flex; flex-direction: column; min-height: 0; }
   .topbar {
     display: flex; align-items: center; gap: 12px;
     padding: 14px 20px; border-bottom: 1px solid var(--border);
@@ -37,7 +37,7 @@
   }
   h1 { font-size: 18px; font-weight: 600; color: var(--text-primary); }
   .count { font-size: 12px; color: var(--text-muted); }
-  .content { flex: 1; overflow-y: auto; padding: 20px; }
+  .content { padding: 20px; }
   .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 12px; }
   .state-msg { display: flex; align-items: center; justify-content: center; height: 200px; color: var(--text-muted); font-size: 14px; }
 </style>

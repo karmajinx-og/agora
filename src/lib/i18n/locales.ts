@@ -38,6 +38,9 @@ export type UiStrings = {
   state_failed: string
   state_no_hits: string
   state_no_hits_for: string
+  state_feed_failed: string
+  state_feed_failed_hint: string
+  retry: string
   word_app: string
   word_apps: string
   home_title: string
@@ -81,6 +84,10 @@ const en: UiStrings = {
   state_failed: 'Failed to load',
   state_no_hits: 'No apps found',
   state_no_hits_for: 'No apps found for',
+  state_feed_failed: 'Couldn’t load the app list from Flathub.',
+  state_feed_failed_hint:
+    'Check your internet, firewall, or VPN. This computer must reach flathub.org (try in Terminal: curl -I https://flathub.org).',
+  retry: 'Try again',
   word_app: 'app',
   word_apps: 'apps',
   home_title: 'Agora — Linux App Store',
@@ -124,6 +131,10 @@ const de: UiStrings = {
   state_failed: 'Laden fehlgeschlagen',
   state_no_hits: 'Keine Apps',
   state_no_hits_for: 'Nichts gefunden zu',
+  state_feed_failed: 'App-Liste von Flathub konnte nicht geladen werden.',
+  state_feed_failed_hint:
+    'Internet, Firewall, VPN prüfen. flathub.org muss erreichbar sein (Test: curl -I https://flathub.org im Terminal).',
+  retry: 'Erneut versuchen',
   word_app: 'App',
   word_apps: 'Apps',
   home_title: 'Agora — Linux-App-Shop',
@@ -167,6 +178,10 @@ const fr: UiStrings = {
   state_failed: 'Échec du chargement',
   state_no_hits: 'Aucune app',
   state_no_hits_for: 'Aucun résultat pour',
+  state_feed_failed: 'Impossible de charger la liste d’apps depuis Flathub.',
+  state_feed_failed_hint:
+    'Vérifiez internet, pare-feu ou VPN. flathub.org doit être accessible (test : curl -I https://flathub.org).',
+  retry: 'Réessayer',
   word_app: 'app',
   word_apps: 'apps',
   home_title: 'Agora — boutique d’apps Linux',
@@ -210,6 +225,10 @@ const es: UiStrings = {
   state_failed: 'Error al cargar',
   state_no_hits: 'Sin resultados',
   state_no_hits_for: 'Sin resultados para',
+  state_feed_failed: 'No se pudo cargar la lista de apps desde Flathub.',
+  state_feed_failed_hint:
+    'Comprueba internet, cortafuegos o VPN. Debe alcanzarse flathub.org (prueba: curl -I https://flathub.org).',
+  retry: 'Reintentar',
   word_app: 'aplicación',
   word_apps: 'aplicaciones',
   home_title: 'Agora — tienda de apps Linux',
@@ -253,6 +272,10 @@ const it: UiStrings = {
   state_failed: 'Caricamento non riuscito',
   state_no_hits: 'Nessun risultato',
   state_no_hits_for: 'Nessun risultato per',
+  state_feed_failed: 'Impossibile caricare l’elenco da Flathub.',
+  state_feed_failed_hint:
+    'Controlla rete, firewall o VPN. flathub.org deve essere raggiungibile (prova: curl -I https://flathub.org).',
+  retry: 'Riprova',
   word_app: 'app',
   word_apps: 'app',
   home_title: 'Agora — app store Linux',
@@ -296,6 +319,10 @@ const pl: UiStrings = {
   state_failed: 'Nie udało się wczytać',
   state_no_hits: 'Brak wyników',
   state_no_hits_for: 'Brak wyników dla',
+  state_feed_failed: 'Nie udało się wczytać listy z Flathub.',
+  state_feed_failed_hint:
+    'Sprawdź internet, firewall lub VPN. Wymagany jest dostęp do flathub.org (test: curl -I https://flathub.org).',
+  retry: 'Spróbuj ponownie',
   word_app: 'aplikacja',
   word_apps: 'aplikacji',
   home_title: 'Agora — sklep Linux',

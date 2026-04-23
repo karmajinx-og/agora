@@ -25,20 +25,24 @@ export interface FlathubSearchResult {
 const BASE = 'https://flathub.org/api/v2'
 
 // Fetch popular apps for the home feed (Flathub v2 uses /collection/popular, not /popular)
-export async function fetchPopularApps(page = 1): Promise<FlathubApp[]> {
-  const res = await fetch(`${BASE}/collection/popular?page=${page}&per_page=36`)
+export async function fetchPopularApps(
+  page = 1,
+  signal?: AbortSignal
+): Promise<FlathubApp[]> {
+  const res = await fetch(`${BASE}/collection/popular?page=${page}&per_page=36`, { signal })
   if (!res.ok) throw new Error(`Flathub API error: ${res.status}`)
   const data = await res.json()
   return data.hits ?? data ?? []
 }
 
 // Search apps by query (v2 expects POST + JSON body)
-export async function searchApps(query: string): Promise<FlathubApp[]> {
-  if (!query.trim()) return fetchPopularApps()
+export async function searchApps(query: string, signal?: AbortSignal): Promise<FlathubApp[]> {
+  if (!query.trim()) return fetchPopularApps(1, signal)
   const res = await fetch(`${BASE}/search`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ query, filters: [], page: 1, hitsPerPage: 36 })
+    body: JSON.stringify({ query, filters: [], page: 1, hitsPerPage: 36 }),
+    signal,
   })
   if (!res.ok) throw new Error(`Flathub search error: ${res.status}`)
   const data = await res.json()

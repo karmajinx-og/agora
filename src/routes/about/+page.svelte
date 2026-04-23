@@ -48,7 +48,7 @@
   <h2 id="what-agora-does">What Agora is (and isn’t)</h2>
   <p>
     <strong>Agora is a guide</strong> on top of <a href="https://flathub.org" target="_blank" rel="noreferrer">Flathub</a> — a big public catalogue
-    of Linux applications. We add a <strong>privacy lens</strong>: short notes and tags from our community, aimed at people who care where data goes
+    of Linux applications. We add a <strong>privacy lens</strong>: short notes and tags from our project (contributions welcome on GitHub), aimed at people who care where data goes
     and whether software is open and trustworthy. That’s especially relevant as more schools, governments, and businesses in Europe move to Linux.
   </p>
   <div class="callout" role="note">
@@ -81,7 +81,8 @@
   <p>Badges on app cards and app pages are <strong>short summaries</strong> of our community notes — things like open source, telemetry, and
     where data may go. They help you <strong>compare at a glance</strong>; the details are still yours to check.</p>
   <p>
-    <strong>Who sets “Safe”, “Caution”, and “Risk” here?</strong> These are <strong>Agora’s own community-maintained labels</strong> — not a
+    <strong>Who sets “Safe”, “Caution”, and “Risk” here?</strong> These are <strong>maintainer-curated labels from Agora</strong> (open to
+    community contribution on GitHub) — not a
     government body, not your IT department, and not an official grade from Flathub. We write them in everyday language; they are a guide, not a
     legal certificate.
   </p>

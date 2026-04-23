@@ -1,4 +1,6 @@
 <script lang="ts">
+  import { tick } from 'svelte'
+  import { invalidateAll } from '$app/navigation'
   import type { PageData } from './$types'
   import { flatpakRef, searchApps, type FlathubApp } from '$lib/flathub'
   import { getSovereignty } from '$lib/sovereignty'
@@ -11,6 +13,7 @@
   let apps: FlathubApp[] = data.apps
   let searchQuery = ''
   let searchTimer: ReturnType<typeof setTimeout>
+  let searchAbort: AbortController | null = null
   let loading = false
   let error = ''
   let sovereigntyFilter: 'all' | 'safe-only' | 'no-risk' = 'all'
@@ -30,19 +33,38 @@
     : sovereigntyFilter === 'no-risk' ? ui.filter_hint_hide
     : ui.filter_hint_safe
 
+  function isAbort(e: unknown) {
+    return typeof e === 'object' && e !== null && (e as { name?: string }).name === 'AbortError'
+  }
+
   async function onSearch() {
     clearTimeout(searchTimer)
     searchTimer = setTimeout(async () => {
+      searchAbort?.abort()
+      const ac = new AbortController()
+      searchAbort = ac
+      const { signal } = ac
       loading = true
       error = ''
       try {
-        apps = await searchApps(searchQuery)
+        const next = await searchApps(searchQuery, signal)
+        if (signal.aborted) return
+        apps = next
       } catch (e) {
+        if (isAbort(e)) return
         error = String(e)
       } finally {
-        loading = false
+        if (!signal.aborted) loading = false
       }
     }, 350)
+  }
+
+  async function retryFeed() {
+    await invalidateAll()
+    await tick()
+    apps = data.apps
+    searchQuery = ''
+    error = ''
   }
 </script>
 
@@ -117,6 +139,13 @@
   <div class="state"><div class="spinner"></div><p>{ui.state_searching}</p></div>
 {:else if error}
   <div class="state error"><p>{ui.state_failed}: {error}</p></div>
+{:else if data.feedError && !searchQuery.trim() && apps.length === 0}
+  <div class="state feed-fail" role="alert">
+    <p class="feed-fail-title">{ui.state_feed_failed}</p>
+    <p class="feed-fail-hint">{ui.state_feed_failed_hint}</p>
+    <p class="feed-fail-tech">{data.feedError}</p>
+    <button type="button" class="retry-btn" on:click={retryFeed}>{ui.retry}</button>
+  </div>
 {:else if filteredApps.length === 0}
   <div class="state">
     <p>
@@ -167,8 +196,24 @@
 
   .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 12px; }
 
-  .state { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px; height: 200px; color: var(--text-muted); font-size: 14px; }
+  .state { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px; min-height: 200px; color: var(--text-muted); font-size: 14px; padding: 24px 16px; text-align: center; }
   .state.error { color: var(--risk); }
+  .feed-fail { max-width: 420px; margin: 0 auto; }
+  .feed-fail-title { color: var(--text-primary); font-weight: 600; margin: 0; }
+  .feed-fail-hint { font-size: 13px; line-height: 1.5; margin: 0; }
+  .feed-fail-tech { font-size: 11px; opacity: 0.7; font-family: ui-monospace, monospace; word-break: break-word; margin: 0; }
+  .retry-btn {
+    margin-top: 4px;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    padding: 8px 16px;
+    font-size: 14px;
+    color: var(--accent);
+    cursor: pointer;
+    font-weight: 600;
+  }
+  .retry-btn:hover { border-color: var(--accent); }
   .spinner { width: 24px; height: 24px; border: 2px solid var(--border); border-top-color: var(--accent); border-radius: 50%; animation: spin 0.7s linear infinite; }
   @keyframes spin { to { transform: rotate(360deg); } }
 </style>

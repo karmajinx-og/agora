@@ -30,7 +30,8 @@ SvelteKit + Cloudflare Pages. **Authoritative app copy for deployment:** this fo
 
 ## Locale / SSR
 
-- UI language is chosen on the **server** from the `agora-locale` cookie and `Accept-Language`, so **SSR HTML and the browser stay in sync** (no translated-string hydration errors).
+- UI language is chosen on the **server** from the `agora-locale` cookie and `Accept-Language` (`src/routes/+layout.server.ts` and `src/lib/i18n/detect.ts`), so the **translated copy matches** in SSR and the client (no translated-string hydration errors).
+- The root **`<html lang="…">`** is set in **`src/hooks.server.ts`** via `transformPageChunk` (same `pickLocale` logic), so the **initial HTML** matches the selected locale, not the placeholder in `app.html`. The layout still sets `document.documentElement.lang` on the client when the user switches language.
 - Changing language in the header updates the cookie and refetches with `invalidateAll()`.
 
 ## Security
