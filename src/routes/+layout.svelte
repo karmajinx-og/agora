@@ -26,6 +26,7 @@
           <a href="/category/Graphics">{ui.nav_graphics}</a>
           <a href="/category/Network">{ui.nav_network}</a>
           <a href="/about">{ui.nav_how}</a>
+          <a href="/updates">{ui.nav_updates}</a>
         </nav>
         <div class="nav-lang">
           <LanguageSelect />
@@ -47,6 +48,13 @@
       <span>{ui.foot_sub}</span>
       <span class="sep">·</span>
       <a href="https://github.com/karmajinx-og/agora" target="_blank" rel="noreferrer">{ui.foot_github}</a>
+      <span class="sep">·</span>
+      <a href="/updates">{ui.nav_updates}</a>
+      <span class="sep">·</span>
+      <a
+        href="https://github.com/karmajinx-og/agora/discussions"
+        target="_blank"
+        rel="noreferrer">{ui.contribute_cta}</a>
       <span class="sep">·</span>
       <a href="https://flathub.org" target="_blank" rel="noreferrer">{ui.foot_flathub}</a>
     </div>

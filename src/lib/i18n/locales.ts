@@ -47,6 +47,20 @@ export type UiStrings = {
   home_title: string
   hero_h1_main: string
   hero_h1_accent: string
+  /** Shown in the home page description meta tag. */
+  meta_home_description: string
+  /** Open Graph description for the home page. */
+  meta_home_og: string
+  meta_about_description: string
+  meta_updates_description: string
+  /** Use literal substring `{category}` (replaced on category pages). */
+  meta_category: string
+  nav_updates: string
+  updates_title: string
+  updates_h1: string
+  updates_stays_en: string
+  /** Footer / growth: link to GitHub Discussions */
+  contribute_cta: string
 }
 
 const en: UiStrings = {
@@ -93,6 +107,20 @@ const en: UiStrings = {
   home_title: 'Agora — Linux App Store',
   hero_h1_main: 'Linux apps, ',
   hero_h1_accent: 'labelled for privacy.',
+  meta_home_description:
+    'Linux apps labelled for privacy — telemetry, data residency, open source, in short notes. For EU Linux users, home and work.',
+  meta_home_og: 'Linux apps labelled for privacy. Flatpak catalogue with short privacy notes for EU Linux users.',
+  meta_about_description:
+    'How Agora works: list filters, colour badges, Flatpak install commands, and honest privacy notes — for people new to Linux in the EU.',
+  meta_updates_description:
+    'Agora changelog and how to help label apps — short privacy notes for Linux software on Flathub.',
+  meta_category: 'Browse {category} Linux apps on Agora — privacy labels, Flatpak install.',
+  nav_updates: 'Updates',
+  updates_title: 'Updates & changelog — Agora',
+  updates_h1: 'Updates',
+  updates_stays_en:
+    'The entries below are in English. Your browser can translate, or you can help translate on GitHub.',
+  contribute_cta: 'Discuss & contribute',
 }
 
 const de: UiStrings = {
@@ -140,6 +168,21 @@ const de: UiStrings = {
   home_title: 'Agora — Linux-App-Shop',
   hero_h1_main: 'Linux-Apps, ',
   hero_h1_accent: 'mit Datenschutz-Labels.',
+  meta_home_description:
+    'Linux-Apps mit Datenschutz-Fokus — Telemetrie, Datenstandort, Open Source, kurz erklärt. Für Linux-Nutzer in der EU, auch am Arbeitsrechner.',
+  meta_home_og:
+    'Linux-Apps mit Datenschutz-Labels. Flatpak-Katalog mit kurzen Hinweisen für die EU.',
+  meta_about_description:
+    'So funktioniert Agora: Filter, Farbbadges, Flatpak-Befehle und ehrliche Datenschutznotizen — für Einsteiger in der EU.',
+  meta_updates_description:
+    'Agora: Neuigkeiten und mithelfen bei App-Labels — Datenschutz zu Linux-Software auf Flathub.',
+  meta_category: '{category}-Apps auf Agora — Datenschutz-Hinweise, Flatpak-Installation.',
+  nav_updates: 'Neuigkeiten',
+  updates_title: 'Neuigkeiten & Changelog — Agora',
+  updates_h1: 'Neuigkeiten',
+  updates_stays_en:
+    'Die Einträge unten sind auf Englisch. Der Browser kann übersetzen; mithelfen auf GitHub.',
+  contribute_cta: 'Mithelfen & Diskussion',
 }
 
 const fr: UiStrings = {
@@ -187,6 +230,20 @@ const fr: UiStrings = {
   home_title: 'Agora — boutique d’apps Linux',
   hero_h1_main: 'Apps Linux, ',
   hero_h1_accent: 'étiquetées pour la confidentialité.',
+  meta_home_description:
+    'Apps Linux étiquetées confidentialité — télémétrie, données, open source, en bref. Pour les Linux dans l’UE, maison et travail.',
+  meta_home_og: 'Apps Linux et confidentialité. Catalogue Flatpak avec notes courtes pour l’UE.',
+  meta_about_description:
+    'Fonctionnement d’Agora : filtres, pastilles, commandes Flatpak et notes honnêtes — pour débutants Linux dans l’UE.',
+  meta_updates_description:
+    'Agora : nouveautés et contribuer aux étiquettes — confidentialité des apps Linux sur Flathub.',
+  meta_category: 'Parcourir les apps {category} sur Agora — notes de confidentialité, Flatpak.',
+  nav_updates: 'Nouveautés',
+  updates_title: 'Nouveautés & journal — Agora',
+  updates_h1: 'Nouveautés',
+  updates_stays_en:
+    'Les entrées ci-dessous sont en anglais. Le navigateur peut traduire ; contribuez sur GitHub.',
+  contribute_cta: 'Contribuer & discussions',
 }
 
 const es: UiStrings = {
@@ -234,6 +291,20 @@ const es: UiStrings = {
   home_title: 'Agora — tienda de apps Linux',
   hero_h1_main: 'Apps Linux, ',
   hero_h1_accent: 'etiquetadas por privacidad.',
+  meta_home_description:
+    'Apps Linux con etiquetas de privacidad: telemetría, datos, open source, en notas breves. Para Linux en la UE, casa y trabajo.',
+  meta_home_og: 'Apps Linux etiquetadas por privacidad. Catálogo Flatpak con notas para la UE.',
+  meta_about_description:
+    'Cómo funciona Agora: filtros, colores, comandos Flatpak y notas de privacidad — para quien empieza con Linux en la UE.',
+  meta_updates_description:
+    'Agora: novedades y cómo ayudar con etiquetas — privacidad de apps Linux en Flathub.',
+  meta_category: 'Explora apps de {category} en Agora — notas de privacidad, Flatpak.',
+  nav_updates: 'Novedades',
+  updates_title: 'Novedades y registro de cambios — Agora',
+  updates_h1: 'Novedades',
+  updates_stays_en:
+    'Las entradas siguientes están en inglés. El navegador puede traducir; colabora en GitHub.',
+  contribute_cta: 'Colaborar y foro',
 }
 
 const it: UiStrings = {
@@ -281,6 +352,19 @@ const it: UiStrings = {
   home_title: 'Agora — app store Linux',
   hero_h1_main: 'App Linux, ',
   hero_h1_accent: 'etichettate per la privacy.',
+  meta_home_description:
+    'App Linux etichettate per la privacy: telemetria, dati, open source, in note brevi. Per utenti Linux nell’UE, lavoro e casa.',
+  meta_home_og: 'App Linux con etichette privacy. Catalogo Flatpak con note per l’UE.',
+  meta_about_description:
+    'Come funziona Agora: filtri, colori, comandi Flatpak e note oneste — per chi inizia con Linux nell’UE.',
+  meta_updates_description:
+    'Agora: novità e come aiutare con le etichette — privacy delle app Linux su Flathub.',
+  meta_category: 'Sfoglia app {category} su Agora — note privacy, installazione Flatpak.',
+  nav_updates: 'Novità',
+  updates_title: 'Novità e changelog — Agora',
+  updates_h1: 'Novità',
+  updates_stays_en: 'Le voci sotto sono in inglese. Il browser può tradurre; contributi su GitHub.',
+  contribute_cta: 'Contribuisci e discussione',
 }
 
 const pl: UiStrings = {
@@ -328,6 +412,19 @@ const pl: UiStrings = {
   home_title: 'Agora — sklep Linux',
   hero_h1_main: 'Aplikacje na Linux, ',
   hero_h1_accent: 'z etykietami prywatności.',
+  meta_home_description:
+    'Aplikacje na Linuxa z etykietami prywatności: telemetria, dane, open source, krótko. Dla użytkowników Linuxa w UE, dom i praca.',
+  meta_home_og: 'Aplikacje z etykietami prywatności. Katalog Flatpak z notatkami dla UE.',
+  meta_about_description:
+    'Jak działa Agora: filtry, kolory, polecenia Flatpak i uczciwe notatki — dla początkujących w UE.',
+  meta_updates_description:
+    'Agora: nowości i pomoc w etykietach — prywatność aplikacji na Flathub.',
+  meta_category: 'Przeglądaj aplikacje {category} w Agorze — prywatność, Flatpak.',
+  nav_updates: 'Aktualności',
+  updates_title: 'Aktualności i dziennik zmian — Agora',
+  updates_h1: 'Aktualności',
+  updates_stays_en: 'Wpisy poniżej są po angielsku. Przeglądarka może tłumaczyć; współpraca na GitHubie.',
+  contribute_cta: 'Dyskusja i wkład',
 }
 
 export const UI: Record<Locale, UiStrings> = { en, de, fr, es, it, pl }

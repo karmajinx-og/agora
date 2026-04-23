@@ -1,12 +1,15 @@
 <script lang="ts">
   import type { PageData } from './$types'
   import AppCard from '$lib/AppCard.svelte'
+  import { getUi, locale } from '$lib/i18n'
   export let data: PageData
+  $: ui = getUi($locale)
+  $: metaCategory = ui.meta_category.replace(/{category}/g, data.category)
 </script>
 
 <svelte:head>
   <title>{data.category} Apps — Agora Linux App Store</title>
-  <meta name="description" content="Browse {data.category} Linux apps with community privacy ratings on Agora." />
+  <meta name="description" content={metaCategory} />
 </svelte:head>
 
 <div class="page">

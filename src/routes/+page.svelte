@@ -70,15 +70,9 @@
 
 <svelte:head>
   <title>{ui.home_title}</title>
-  <meta
-    name="description"
-    content="Linux apps labelled for privacy — telemetry, data residency, open source, in short notes. For EU Linux users, home and work."
-  />
+  <meta name="description" content={ui.meta_home_description} />
   <meta property="og:title" content={ui.home_title} />
-  <meta
-    property="og:description"
-    content="Linux apps labelled for privacy. Short notes for EU Linux users — Flatpak catalogue with a privacy lens."
-  />
+  <meta property="og:description" content={ui.meta_home_og} />
 </svelte:head>
 
 <div class="hero">

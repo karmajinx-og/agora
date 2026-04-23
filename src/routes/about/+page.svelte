@@ -5,10 +5,7 @@
 
 <svelte:head>
   <title>{ui.about_title}</title>
-  <meta
-    name="description"
-    content="New to Linux? How Agora’s list filters and community ratings work — in plain language. No jargon required."
-  />
+  <meta name="description" content={ui.meta_about_description} />
 </svelte:head>
 
 <div class="page">
