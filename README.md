@@ -4,7 +4,7 @@ SvelteKit + Cloudflare Pages. **Authoritative app copy for deployment:** this fo
 
 ## Requirements
 
-- **Node 20+** (matches Cloudflare Pages: set `NODE_VERSION=20` in project environment variables)
+- **Node 20** — use **`.nvmrc`** (`nvm use` / `fnm use`) so local matches **Cloudflare Pages** (the build image reads `.nvmrc` / `NODE_VERSION`).
 - `npm ci` for reproducible installs (CI and deploys use this, not `npm install` for lockfile changes)
 
 ## Commands
@@ -20,7 +20,7 @@ SvelteKit + Cloudflare Pages. **Authoritative app copy for deployment:** this fo
 
 1. `npm run ci` must pass locally (or on GitHub Actions).
 2. Push to **`main`** on `karmajinx-og/agora`.
-3. Cloudflare **Build command:** `npm run build` — **Output directory:** `.svelte-kit/cloudflare` (see `wrangler.toml` `pages_build_output_dir`).
+3. Cloudflare **Build command:** `npm run build` — **Output directory:** `.svelte-kit/cloudflare` (see `wrangler.toml` `pages_build_output_dir`). **Build system:** use **v3** if available (**Settings → Build & deployments → Build system version**); Node is pinned via **`.nvmrc`** at the repo root.
 
 **Sync from Cursor (two-folder workflow):** when you work in `Agora Cursor/web/`, copy sources into `agora-github-sync/` (exclude `node_modules/`, `.env`, `.svelte-kit`, `node_modules` — see `.gitignore`) before committing, or make `web/` the only clone and open it as the repo root.
 
