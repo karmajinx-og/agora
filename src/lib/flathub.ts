@@ -1,3 +1,5 @@
+import { withTimeout } from '$lib/abort'
+
 // Flathub API types
 export interface FlathubApp {
   /** v2 index key, often underscored (e.g. org_mozilla_firefox) */
@@ -24,15 +26,38 @@ export interface FlathubSearchResult {
 
 const BASE = 'https://flathub.org/api/v2'
 
+/** Per-request ceiling so Cloudflare / browsers don’t hang on Flathub. */
+const FLATHUB_TIMEOUT_MS = 14_000
+
+function flathubSignal(signal?: AbortSignal): AbortSignal {
+  return withTimeout(signal, FLATHUB_TIMEOUT_MS)
+}
+
+async function parseJsonHits(res: Response): Promise<FlathubApp[]> {
+  let data: unknown
+  try {
+    data = await res.json()
+  } catch {
+    throw new Error('Flathub returned non-JSON body')
+  }
+  if (data && typeof data === 'object' && 'hits' in data && Array.isArray((data as { hits: unknown }).hits)) {
+    return (data as { hits: FlathubApp[] }).hits
+  }
+  if (Array.isArray(data)) return data as FlathubApp[]
+  return []
+}
+
 // Fetch popular apps for the home feed (Flathub v2 uses /collection/popular, not /popular)
 export async function fetchPopularApps(
   page = 1,
   signal?: AbortSignal
 ): Promise<FlathubApp[]> {
-  const res = await fetch(`${BASE}/collection/popular?page=${page}&per_page=36`, { signal })
+  const res = await fetch(`${BASE}/collection/popular?page=${page}&per_page=36`, {
+    signal: flathubSignal(signal),
+    headers: { Accept: 'application/json' },
+  })
   if (!res.ok) throw new Error(`Flathub API error: ${res.status}`)
-  const data = await res.json()
-  return data.hits ?? data ?? []
+  return parseJsonHits(res)
 }
 
 // Search apps by query (v2 expects POST + JSON body)
@@ -40,29 +65,35 @@ export async function searchApps(query: string, signal?: AbortSignal): Promise<F
   if (!query.trim()) return fetchPopularApps(1, signal)
   const res = await fetch(`${BASE}/search`, {
     method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
+    headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
     body: JSON.stringify({ query, filters: [], page: 1, hitsPerPage: 36 }),
-    signal,
+    signal: flathubSignal(signal),
   })
   if (!res.ok) throw new Error(`Flathub search error: ${res.status}`)
-  const data = await res.json()
-  return data.hits ?? []
+  return parseJsonHits(res)
 }
 
 // Fetch apps by category
-export async function fetchByCategory(category: string): Promise<FlathubApp[]> {
+export async function fetchByCategory(category: string, signal?: AbortSignal): Promise<FlathubApp[]> {
   const res = await fetch(
-    `${BASE}/collection/category/${encodeURIComponent(category)}?page=1&per_page=36`
+    `${BASE}/collection/category/${encodeURIComponent(category)}?page=1&per_page=36`,
+    { signal: flathubSignal(signal), headers: { Accept: 'application/json' } }
   )
   if (!res.ok) throw new Error(`Flathub category error: ${res.status}`)
-  const data = await res.json()
-  return data.hits ?? data ?? []
+  return parseJsonHits(res)
 }
 
-export async function fetchAppDetail(id: string): Promise<FlathubApp> {
-  const res = await fetch(`${BASE}/appstream/${encodeURIComponent(id)}`)
+export async function fetchAppDetail(id: string, signal?: AbortSignal): Promise<FlathubApp> {
+  const res = await fetch(`${BASE}/appstream/${encodeURIComponent(id)}`, {
+    signal: flathubSignal(signal),
+    headers: { Accept: 'application/json' },
+  })
   if (!res.ok) throw new Error(`App detail error: ${res.status}`)
-  return res.json()
+  try {
+    return (await res.json()) as FlathubApp
+  } catch {
+    throw new Error('App detail returned non-JSON')
+  }
 }
 
 /** Flatpak app ref for APIs, install commands, and sovereignty DB (dotted id). */

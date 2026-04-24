@@ -39,6 +39,11 @@
     transition: background 0.15s, border-color 0.15s, transform 0.1s;
   }
   .card:hover { background: var(--bg-card-hover); border-color: var(--border-hover); transform: translateY(-1px); }
+
+  @media (prefers-reduced-motion: reduce) {
+    .card { transition: none; }
+    .card:hover { transform: none; }
+  }
   .icon-wrap { width: 56px; height: 56px; border-radius: 12px; overflow: hidden; flex-shrink: 0; background: var(--bg-input); }
   .icon-wrap img { width: 100%; height: 100%; object-fit: cover; }
   .icon-fallback { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; font-size: 22px; font-weight: 700; color: var(--text-secondary); background: var(--border); }

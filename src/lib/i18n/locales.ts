@@ -55,6 +55,12 @@ export type UiStrings = {
   meta_updates_description: string
   /** Use literal substring `{category}` (replaced on category pages). */
   meta_category: string
+  /** Home page H2 above the app grid (document outline / SEO). */
+  home_h2_catalog: string
+  /** Category page H2; use `{category}` placeholder. */
+  category_h2_grid: string
+  /** App detail page H2 for the install block. */
+  app_install_h2: string
   nav_updates: string
   updates_title: string
   updates_h1: string
@@ -76,7 +82,7 @@ const en: UiStrings = {
   foot_github: 'GitHub',
   foot_flathub: 'Powered by Flathub',
   hero_sub:
-    'Telemetry, data residency, open-source status — in short notes. Built for Linux users in the EU, including on work machines.',
+    'A privacy-friendly Linux app store for Flatpak apps: short notes on telemetry, open-source status, and data residency. Built for EU Linux users, home and work.',
   hero_help_intro: 'First time here? Read ',
   hero_help_hint: '',
   filter_label: 'Filter',
@@ -108,13 +114,17 @@ const en: UiStrings = {
   hero_h1_main: 'Linux apps, ',
   hero_h1_accent: 'labelled for privacy.',
   meta_home_description:
-    'Linux apps labelled for privacy — telemetry, data residency, open source, in short notes. For EU Linux users, home and work.',
-  meta_home_og: 'Linux apps labelled for privacy. Flatpak catalogue with short privacy notes for EU Linux users.',
+    'Agora is a Linux app store with privacy labels for every app — tracking, telemetry, open-source status. Find and install Flatpak apps safely on Linux.',
+  meta_home_og:
+    'Linux apps with privacy labels. Find Flatpak apps with notes on telemetry, open source, and data residency — EU-friendly.',
   meta_about_description:
     'How Agora works: list filters, colour badges, Flatpak install commands, and honest privacy notes — for people new to Linux in the EU.',
   meta_updates_description:
     'Agora changelog and how to help label apps — short privacy notes for Linux software on Flathub.',
   meta_category: 'Browse {category} Linux apps on Agora — privacy labels, Flatpak install.',
+  home_h2_catalog: 'Popular Linux apps',
+  category_h2_grid: 'Linux apps in {category}',
+  app_install_h2: 'Install on Linux',
   nav_updates: 'Updates',
   updates_title: 'Updates & changelog — Agora',
   updates_h1: 'Updates',
@@ -177,6 +187,9 @@ const de: UiStrings = {
   meta_updates_description:
     'Agora: Neuigkeiten und mithelfen bei App-Labels — Datenschutz zu Linux-Software auf Flathub.',
   meta_category: '{category}-Apps auf Agora — Datenschutz-Hinweise, Flatpak-Installation.',
+  home_h2_catalog: 'Beliebte Linux-Apps',
+  category_h2_grid: 'Linux-Apps: {category}',
+  app_install_h2: 'Installation unter Linux',
   nav_updates: 'Neuigkeiten',
   updates_title: 'Neuigkeiten & Changelog — Agora',
   updates_h1: 'Neuigkeiten',
@@ -238,6 +251,9 @@ const fr: UiStrings = {
   meta_updates_description:
     'Agora : nouveautés et contribuer aux étiquettes — confidentialité des apps Linux sur Flathub.',
   meta_category: 'Parcourir les apps {category} sur Agora — notes de confidentialité, Flatpak.',
+  home_h2_catalog: 'Apps Linux populaires',
+  category_h2_grid: 'Apps Linux : {category}',
+  app_install_h2: 'Installer sur Linux',
   nav_updates: 'Nouveautés',
   updates_title: 'Nouveautés & journal — Agora',
   updates_h1: 'Nouveautés',
@@ -299,6 +315,9 @@ const es: UiStrings = {
   meta_updates_description:
     'Agora: novedades y cómo ayudar con etiquetas — privacidad de apps Linux en Flathub.',
   meta_category: 'Explora apps de {category} en Agora — notas de privacidad, Flatpak.',
+  home_h2_catalog: 'Apps Linux populares',
+  category_h2_grid: 'Apps Linux: {category}',
+  app_install_h2: 'Instalar en Linux',
   nav_updates: 'Novedades',
   updates_title: 'Novedades y registro de cambios — Agora',
   updates_h1: 'Novedades',
@@ -360,6 +379,9 @@ const it: UiStrings = {
   meta_updates_description:
     'Agora: novità e come aiutare con le etichette — privacy delle app Linux su Flathub.',
   meta_category: 'Sfoglia app {category} su Agora — note privacy, installazione Flatpak.',
+  home_h2_catalog: 'App Linux popolari',
+  category_h2_grid: 'App Linux: {category}',
+  app_install_h2: 'Installazione su Linux',
   nav_updates: 'Novità',
   updates_title: 'Novità e changelog — Agora',
   updates_h1: 'Novità',
@@ -420,6 +442,9 @@ const pl: UiStrings = {
   meta_updates_description:
     'Agora: nowości i pomoc w etykietach — prywatność aplikacji na Flathub.',
   meta_category: 'Przeglądaj aplikacje {category} w Agorze — prywatność, Flatpak.',
+  home_h2_catalog: 'Popularne aplikacje na Linuxa',
+  category_h2_grid: 'Aplikacje Linux: {category}',
+  app_install_h2: 'Instalacja na Linuxie',
   nav_updates: 'Aktualności',
   updates_title: 'Aktualności i dziennik zmian — Agora',
   updates_h1: 'Aktualności',

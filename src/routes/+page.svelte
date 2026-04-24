@@ -5,13 +5,17 @@
   import { flatpakRef, searchApps, type FlathubApp } from '$lib/flathub'
   import { getSovereignty } from '$lib/sovereignty'
   import { locale, getUi } from '$lib/i18n'
+  import { jsonLdScript } from '$lib/seo'
+  import { OG_IMAGE_URL, SITE_ORIGIN } from '$lib/site'
   import AppCard from '$lib/AppCard.svelte'
 
   export let data: PageData
   $: ui = getUi($locale)
 
   let apps: FlathubApp[] = data.apps
+  $: apps = data.apps
   let searchQuery = ''
+  $: searchQuery = data.initialQ
   let searchTimer: ReturnType<typeof setTimeout>
   let searchAbort: AbortController | null = null
   let loading = false
@@ -62,17 +66,37 @@
   async function retryFeed() {
     await invalidateAll()
     await tick()
-    apps = data.apps
-    searchQuery = ''
     error = ''
+  }
+
+  $: websiteJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    name: 'Agora Linux App Store',
+    url: SITE_ORIGIN,
+    description: ui.meta_home_description,
+    image: OG_IMAGE_URL,
+    potentialAction: {
+      '@type': 'SearchAction',
+      target: `${SITE_ORIGIN}/?q={search_term_string}`,
+      'query-input': 'required name=search_term_string',
+    },
   }
 </script>
 
 <svelte:head>
   <title>{ui.home_title}</title>
   <meta name="description" content={ui.meta_home_description} />
+  <link rel="canonical" href="{SITE_ORIGIN}/" />
   <meta property="og:title" content={ui.home_title} />
   <meta property="og:description" content={ui.meta_home_og} />
+  <meta property="og:url" content="{SITE_ORIGIN}/" />
+  <meta property="og:image" content={OG_IMAGE_URL} />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content={ui.home_title} />
+  <meta name="twitter:description" content={ui.meta_home_og} />
+  <meta name="twitter:image" content={OG_IMAGE_URL} />
+  {@html jsonLdScript(websiteJsonLd)}
 </svelte:head>
 
 <div class="hero">
@@ -109,6 +133,7 @@
           type="button"
           class="filter-btn"
           class:active={sovereigntyFilter === 'all'}
+          aria-pressed={sovereigntyFilter === 'all'}
           title="Show the full list. Card badges use our notes when we have them."
           on:click={() => sovereigntyFilter = 'all'}
         >{ui.filter_all}</button>
@@ -116,6 +141,7 @@
           type="button"
           class="filter-btn"
           class:active={sovereigntyFilter === 'no-risk'}
+          aria-pressed={sovereigntyFilter === 'no-risk'}
           title="Hides apps we’ve flagged as high-risk. Unreviewed apps still appear in the list."
           on:click={() => sovereigntyFilter = 'no-risk'}
         >{ui.filter_hide}</button>
@@ -123,6 +149,7 @@
           type="button"
           class="filter-btn"
           class:active={sovereigntyFilter === 'safe-only'}
+          aria-pressed={sovereigntyFilter === 'safe-only'}
           title="Only apps that fully pass our review criteria. Short list by design."
           on:click={() => sovereigntyFilter = 'safe-only'}
         >{ui.filter_safe}</button>
@@ -154,6 +181,7 @@
     </p>
   </div>
 {:else}
+  <h2 class="catalog-heading">{ui.home_h2_catalog}</h2>
   <div class="grid">
     {#each filteredApps as app (flatpakRef(app))}
       <AppCard {app} />
@@ -171,6 +199,14 @@
   .hero-help-link { color: var(--accent); font-weight: 500; text-decoration: none; }
   .hero-help-link:hover { text-decoration: underline; }
   .hero-help-hint { display: block; margin-top: 8px; font-size: 13px; color: var(--text-muted); line-height: 1.5; max-width: 1200px; }
+
+  .catalog-heading {
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin: 0 0 16px;
+    letter-spacing: -0.01em;
+  }
 
   .toolbar-wrap { margin-bottom: 24px; }
   .toolbar { display: flex; align-items: flex-end; gap: 12px; flex-wrap: wrap; }

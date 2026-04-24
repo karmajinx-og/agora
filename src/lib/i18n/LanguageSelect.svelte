@@ -34,7 +34,7 @@
     border-radius: var(--radius-sm); padding: 4px 8px; cursor: pointer;
     max-width: 120px;
   }
-  .lang-select:focus { border-color: var(--accent); outline: none; }
+  .lang-select:focus-visible { border-color: var(--accent); }
   .visually-hidden {
     position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
     overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0;

@@ -1,11 +1,21 @@
 <script lang="ts">
   import { locale, getUi } from '$lib/i18n'
+  import { OG_IMAGE_URL, SITE_ORIGIN } from '$lib/site'
   $: ui = getUi($locale)
 </script>
 
 <svelte:head>
   <title>{ui.about_title}</title>
   <meta name="description" content={ui.meta_about_description} />
+  <link rel="canonical" href="{SITE_ORIGIN}/about" />
+  <meta property="og:title" content={ui.about_title} />
+  <meta property="og:description" content={ui.meta_about_description} />
+  <meta property="og:url" content="{SITE_ORIGIN}/about" />
+  <meta property="og:image" content={OG_IMAGE_URL} />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content={ui.about_title} />
+  <meta name="twitter:description" content={ui.meta_about_description} />
+  <meta name="twitter:image" content={OG_IMAGE_URL} />
 </svelte:head>
 
 <div class="page">

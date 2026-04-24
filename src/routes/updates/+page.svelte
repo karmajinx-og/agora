@@ -1,13 +1,21 @@
 <script lang="ts">
   import { getUi, locale } from '$lib/i18n'
+  import { OG_IMAGE_URL, SITE_ORIGIN } from '$lib/site'
   $: ui = getUi($locale)
 </script>
 
 <svelte:head>
   <title>{ui.updates_title}</title>
   <meta name="description" content={ui.meta_updates_description} />
+  <link rel="canonical" href="{SITE_ORIGIN}/updates" />
   <meta property="og:title" content={ui.updates_title} />
   <meta property="og:description" content={ui.meta_updates_description} />
+  <meta property="og:url" content="{SITE_ORIGIN}/updates" />
+  <meta property="og:image" content={OG_IMAGE_URL} />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content={ui.updates_title} />
+  <meta name="twitter:description" content={ui.meta_updates_description} />
+  <meta name="twitter:image" content={OG_IMAGE_URL} />
 </svelte:head>
 
 <div class="page">
@@ -23,6 +31,28 @@
       <p>{ui.updates_stays_en}</p>
     </div>
   {/if}
+
+  <article class="entry" aria-labelledby="entry-2026-05">
+    <h2 id="entry-2026-05">May 2026</h2>
+    <ul class="plain-list">
+      <li>
+        <strong>SEO &amp; sharing:</strong> Default <strong>Open Graph / Twitter</strong> images (<code>static/og.png</code>),
+        <code>og:image</code> / <code>twitter:image</code> on main routes, and per-app share images from Flathub icons where possible.
+      </li>
+      <li>
+        <strong>Sitemap:</strong> Dynamic <code>/sitemap.xml</code> with a <strong>time budget</strong> and per-page timeouts so crawlers get a
+        full XML response even when Flathub is slow; longer CDN cache + <code>stale-while-revalidate</code>.
+      </li>
+      <li>
+        <strong>Flathub client:</strong> <strong>14s</strong> request timeouts, <code>Accept: application/json</code>, and safer JSON parsing for
+        list endpoints.
+      </li>
+      <li>
+        <strong>Accessibility:</strong> Skip link to <code>#main-content</code>, <code>aria-current</code> on primary nav,
+        <code>aria-pressed</code> on home filter toggles, visible <code>:focus-visible</code> rings, reduced-motion on app cards.
+      </li>
+    </ul>
+  </article>
 
   <article class="entry" aria-labelledby="entry-2026-04">
     <h2 id="entry-2026-04">April 2026</h2>

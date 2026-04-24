@@ -2,11 +2,20 @@
   import type { PageData } from './$types'
   import { flatpakRef, iconUrl, installCommand } from '$lib/flathub'
   import SovereigntyBadge from '$lib/SovereigntyBadge.svelte'
+  import { getUi, locale } from '$lib/i18n'
+  import { jsonLdScript } from '$lib/seo'
+  import { OG_IMAGE_URL, SITE_ORIGIN } from '$lib/site'
 
   export let data: PageData
   $: app = data.app
   $: sovereignty = data.sovereignty
   $: command = installCommand(flatpakRef(app))
+  $: ui = getUi($locale)
+  $: ref = flatpakRef(app)
+  $: canonicalAppUrl = `${SITE_ORIGIN}/app/${encodeURIComponent(ref)}`
+  $: appDescription = `${app.summary} Install ${app.name} on Linux via Flatpak. Privacy-oriented Linux app store listing.`
+  $: shareIcon = iconUrl(app)
+  $: ogImageAbsolute = shareIcon.startsWith('http') ? shareIcon : OG_IMAGE_URL
 
   let copied = false
   let imgError = false
@@ -16,11 +25,35 @@
     copied = true
     setTimeout(() => copied = false, 2000)
   }
+
+  $: appJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'SoftwareApplication',
+    name: app.name,
+    description: app.summary,
+    operatingSystem: 'Linux',
+    applicationCategory: app.categories?.[0] ?? 'DesktopApplication',
+    url: canonicalAppUrl,
+    image: iconUrl(app),
+    ...(app.is_free_license
+      ? { offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' } }
+      : {}),
+  }
 </script>
 
 <svelte:head>
   <title>{app.name} — Agora Linux App Store</title>
-  <meta name="description" content="{app.summary}. Install {app.name} on Linux via Flatpak." />
+  <meta name="description" content={appDescription} />
+  <link rel="canonical" href={canonicalAppUrl} />
+  <meta property="og:title" content="{app.name} — Agora Linux App Store" />
+  <meta property="og:description" content={app.summary} />
+  <meta property="og:url" content={canonicalAppUrl} />
+  <meta property="og:image" content={ogImageAbsolute} />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="{app.name} — Agora Linux App Store" />
+  <meta name="twitter:description" content={app.summary} />
+  <meta name="twitter:image" content={ogImageAbsolute} />
+  {@html jsonLdScript(appJsonLd)}
 </svelte:head>
 
 <div class="page">
@@ -48,7 +81,7 @@
   {/if}
 
   <div class="install-section">
-    <p class="install-label">Install on Linux</p>
+    <h2 class="install-label">{ui.app_install_h2}</h2>
     <div class="install-box">
       <code class="command">{command}</code>
       <button class="copy-btn" class:copied on:click={copyCommand}>
@@ -111,7 +144,10 @@
   }
 
   .install-section { margin: 24px 0; }
-  .install-label { font-size: 12px; font-weight: 600; color: var(--text-muted); text-transform: uppercase; letter-spacing: .06em; margin-bottom: 8px; }
+  .install-label {
+    font-size: 12px; font-weight: 600; color: var(--text-muted);
+    text-transform: uppercase; letter-spacing: .06em; margin: 0 0 8px;
+  }
 
   .install-box {
     display: flex; align-items: center; gap: 0;

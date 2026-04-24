@@ -16,6 +16,14 @@ SvelteKit + Cloudflare Pages. **Authoritative app copy for deployment:** this fo
 | `npm run build`| Production build → `.svelte-kit/cloudflare` |
 | `npm run ci`   | `check` then `build` (same as CI) |
 
+## SEO & social (built-in)
+
+- **Canonical URLs**, meta descriptions, **Open Graph** + **Twitter Card** tags on home, about, updates, categories, and app pages.
+- **JSON-LD:** `WebSite` (+ `SearchAction` for `/?q=`) on the home page; `SoftwareApplication` on each app page.
+- **Assets:** `static/og.png` (1200×630) and `static/favicon.png` — replace with final brand art when ready; URLs are referenced as `https://agoralinux.app/og.png`.
+- **Sitemap:** `src/routes/sitemap.xml/+server.ts` builds `/sitemap.xml` from static routes + Flathub popular pages under a **total time budget** (see code) so Google always gets valid XML.
+- **robots.txt:** `static/robots.txt` points to the sitemap.
+
 ## Deploy workflow (Cloudflare Pages)
 
 1. `npm run ci` must pass locally (or on GitHub Actions).
@@ -42,8 +50,9 @@ SvelteKit + Cloudflare Pages. **Authoritative app copy for deployment:** this fo
 ## Pre-release checklist (quick)
 
 1. `npm run ci` passes.
-2. Optional: `npx lighthouse https://agoralinux.app` (performance / a11y / SEO).
-3. From `agora-github-sync`: `git push origin main` → wait for Cloudflare **Success**.
+2. Optional: `chmod +x scripts/*.sh` then `./scripts/verify-production.sh` after deploy (HTTP 200 on `/`, `/robots.txt`, `/sitemap.xml`, `/about`, `/updates`).
+3. Optional: `npx lighthouse https://agoralinux.app` (performance / a11y / SEO).
+4. From `agora-github-sync`: `git push origin main` → wait for Cloudflare **Success**.
 
 ## Sync script (two-folder workflow)
 

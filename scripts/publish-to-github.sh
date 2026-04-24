@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 # Sync this web/ tree into agora-github-sync, then you commit + push from there.
 # Usage: from web/  →  ./scripts/publish-to-github.sh
+# Env: AGORA_GITHUB_SYNC=/path/to/clone (default: ../agora-github-sync)
 set -euo pipefail
 ROOT="$(cd "$(dirname "$0")/.." && pwd)"
 DEST="${AGORA_GITHUB_SYNC:-$ROOT/../agora-github-sync}"
@@ -17,4 +18,5 @@ rsync -a \
   --exclude=.DS_Store \
   "$ROOT/" "$DEST/"
 echo "Synced → $DEST"
+echo "Tip: run ./scripts/verify-production.sh after Cloudflare finishes deploying."
 echo "Next: cd \"$DEST\" && npm run ci && git add -A && git status && git commit && git push origin main"
