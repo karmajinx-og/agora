@@ -32,7 +32,7 @@
 
 <style>
   .card {
-    display: flex; flex-direction: column; align-items: flex-start;
+    display: flex; flex-direction: column; align-items: center; text-align: center;
     background: var(--bg-card); border: 1px solid var(--border);
     border-radius: var(--radius); padding: 16px; gap: 10px;
     text-decoration: none; color: inherit;
@@ -42,13 +42,17 @@
   .icon-wrap { width: 56px; height: 56px; border-radius: 12px; overflow: hidden; flex-shrink: 0; background: var(--bg-input); }
   .icon-wrap img { width: 100%; height: 100%; object-fit: cover; }
   .icon-fallback { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; font-size: 22px; font-weight: 700; color: var(--text-secondary); background: var(--border); }
-  .info { display: flex; flex-direction: column; gap: 4px; width: 100%; }
-  .name { font-size: 14px; font-weight: 600; color: var(--text-primary); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .info { display: flex; flex-direction: column; align-items: center; gap: 4px; width: 100%; }
+  .name {
+    font-size: 14px; font-weight: 600; color: var(--text-primary);
+    max-width: 100%; text-align: center;
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+  }
   .summary {
     font-size: 12px; color: var(--text-secondary); line-height: 1.4;
     display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
-    line-clamp: 2;
+    line-clamp: 2; text-align: center;
   }
-  .meta { display: flex; align-items: center; gap: 6px; margin-top: 4px; flex-wrap: wrap; }
+  .meta { display: flex; align-items: center; justify-content: center; gap: 6px; margin-top: 4px; flex-wrap: wrap; }
   .free { font-size: 10px; font-weight: 600; color: var(--text-muted); text-transform: uppercase; letter-spacing: .04em; }
 </style>
