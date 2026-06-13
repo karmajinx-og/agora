@@ -1,6 +1,6 @@
 <script lang="ts">
   import { tick } from 'svelte'
-  import { invalidateAll } from '$app/navigation'
+  import { invalidateAll, goto } from '$app/navigation'
   import type { PageData } from './$types'
   import { flatpakRef, searchApps, type FlathubApp } from '$lib/flathub'
   import { getSovereignty } from '$lib/sovereignty'
@@ -44,21 +44,20 @@
   async function onSearch() {
     clearTimeout(searchTimer)
     searchTimer = setTimeout(async () => {
-      searchAbort?.abort()
-      const ac = new AbortController()
-      searchAbort = ac
-      const { signal } = ac
+      const q = searchQuery.trim()
       loading = true
       error = ''
       try {
-        const next = await searchApps(searchQuery, signal)
-        if (signal.aborted) return
-        apps = next
+        await goto(q ? `/?q=${encodeURIComponent(q)}` : '/', {
+          replaceState: true,
+          keepFocus: true,
+          noScroll: true,
+        })
       } catch (e) {
         if (isAbort(e)) return
         error = String(e)
       } finally {
-        if (!signal.aborted) loading = false
+        loading = false
       }
     }, 350)
   }
@@ -112,7 +111,14 @@
 </div>
 
 <div class="toolbar-wrap">
-  <div class="toolbar">
+  <nav class="cat-nav" aria-label="Browse by category">
+  <a href="/category/Office" class="cat-link">📄 Office</a>
+  <a href="/category/Development" class="cat-link">💻 Dev Tools</a>
+  <a href="/category/Graphics" class="cat-link">🎨 Graphics</a>
+  <a href="/category/Network" class="cat-link">🌐 Network</a>
+</nav>
+
+<div class="toolbar">
     <div class="search-wrap">
       <svg class="search-icon" viewBox="0 0 20 20" fill="none">
         <circle cx="8.5" cy="8.5" r="5.5" stroke="currentColor" stroke-width="1.5"/>
@@ -142,7 +148,7 @@
           class="filter-btn"
           class:active={sovereigntyFilter === 'no-risk'}
           aria-pressed={sovereigntyFilter === 'no-risk'}
-          title="Hides apps we’ve flagged as high-risk. Unreviewed apps still appear in the list."
+          title="Hides apps weâve flagged as high-risk. Unreviewed apps still appear in the list."
           on:click={() => sovereigntyFilter = 'no-risk'}
         >{ui.filter_hide}</button>
         <button
@@ -253,4 +259,29 @@
   .retry-btn:hover { border-color: var(--accent); }
   .spinner { width: 24px; height: 24px; border: 2px solid var(--border); border-top-color: var(--accent); border-radius: 50%; animation: spin 0.7s linear infinite; }
   @keyframes spin { to { transform: rotate(360deg); } }
+  .cat-nav {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    margin-bottom: 1.25rem;
+  }
+  .cat-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.45rem 1rem;
+    border-radius: 999px;
+    border: 1px solid var(--border, #2a2d3e);
+    background: var(--bg-card, #1a1d27);
+    color: var(--text-secondary, #8b90a8);
+    font-size: 0.85rem;
+    font-weight: 500;
+    text-decoration: none;
+    transition: background 0.15s, border-color 0.15s, color 0.15s;
+  }
+  .cat-link:hover {
+    background: var(--bg-card-hover, #20243a);
+    border-color: var(--accent, #5b7ef7);
+    color: var(--text-primary, #e8eaf0);
+  }
 </style>
